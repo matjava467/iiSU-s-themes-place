@@ -1,0 +1,20 @@
+fetch('data/themes.json')
+.then(res => res.json())
+.then(themes => {
+    const container = document.getElementById('themes');
+
+    themes.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'theme';
+
+        card.innerHTML = `
+            <a href="themes/${t.zip}" download>
+                <img src="previews/${t.preview}" class="preview">
+            </a>
+            <h3>${t.name}</h3>
+            <p>${t.desc}</p>
+        `;
+
+        container.appendChild(card);
+    });
+});
